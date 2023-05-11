@@ -7,7 +7,7 @@ RSpec.describe 'Camps lodges index' do
     silver_lake = dobbins.lodges.create!(name: 'Silver Lake', director: 'Jake Burr', number_of_staff: 6, specialty_area: true)
 
     visit "/camps/#{dobbins.id}/lodges"
-    expect(page).to have_content("Lodges")
+    expect(page).to have_content("#{dobbins.name} Lodges")
     expect(page).to have_content("#{scout_craft.name}")
     expect(page).to have_content("Director: #{scout_craft.director}")
     expect(page).to have_content("Number of Staff: #{scout_craft.number_of_staff}")
@@ -18,6 +18,6 @@ RSpec.describe 'Camps lodges index' do
     expect(page).to have_content("Specialty Area: #{silver_lake.specialty_area}")
   #partials lesson 
   #gives ability to reuse identical bits of code 
-  
+
   end
 end

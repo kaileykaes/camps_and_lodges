@@ -16,5 +16,8 @@ RSpec.describe 'Camps lodges index' do
     expect(page).to have_content("Director: #{silver_lake.director}")
     expect(page).to have_content("Number of Staff: #{silver_lake.number_of_staff}")
     expect(page).to have_content("Specialty Area: #{silver_lake.specialty_area}")
+  #partials lesson 
+  #gives ability to reuse identical bits of code 
+  
   end
 end

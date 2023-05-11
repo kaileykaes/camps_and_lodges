@@ -6,7 +6,7 @@ RSpec.describe "Camp" do
       dobbins = Camp.create!(name: 'Camp Cris Dobbins', campground_number: 13, vacancy: true)
       visit "/camps" 
       expect(page).to have_content(dobbins.name)
-   end
+    end
 
     it '/camps/:id shows particular camp with attributes' do 
       dobbins = Camp.create!(name: 'Camp Cris Dobbins', campground_number: 13, vacancy: true)

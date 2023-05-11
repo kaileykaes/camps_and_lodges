@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/camps', to: 'camps#index'
   get '/camps/:id', to: 'camps#show'
   get '/lodges', to: 'lodges#index'
+  get '/lodges/:id', to: 'lodges#show'
 end

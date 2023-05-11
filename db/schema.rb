@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_11_152900) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_173836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,4 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_152900) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lodges", force: :cascade do |t|
+    t.string "name"
+    t.string "director"
+    t.integer "number_of_staff"
+    t.boolean "specialty_area"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "camp_id", null: false
+    t.index ["camp_id"], name: "index_lodges_on_camp_id"
+  end
+
+  add_foreign_key "lodges", "camps"
 end

@@ -1,0 +1,3 @@
+class LodgesController <ApplicationController
+  
+end

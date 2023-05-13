@@ -4,7 +4,7 @@ RSpec.describe "Camp" do
   describe 'camp indices' do 
 
     before(:each) do 
-      @dobbins = Camp.create!(name: 'Camp Cris @dobbins', campground_number: 13, vacancy: true)
+      @dobbins = Camp.create!(name: 'Camp Cris Dobbins', campground_number: 13, vacancy: true)
       @dietler = Camp.create!(name: 'Camp Cortland Dietler', campground_number: 6, vacancy: false)
       @magness = Camp.create!(name: 'Magness Adventure Camp', campground_number: 4, vacancy: true)
     end

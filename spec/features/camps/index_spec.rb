@@ -38,10 +38,11 @@ RSpec.describe "Camp" do
     end
 
     it '/camps/:id shows number of associated lodges' do
-      visit "/camps/#{@dobbins.id}"
       scout_craft = @dobbins.lodges.create!(name: 'Scout Craft', director: 'Lauren Dewey', number_of_staff: 4, specialty_area: false)
       silver_lake = @dobbins.lodges.create!(name: 'Silver Lake', director: 'Jake Burr', number_of_staff: 6, specialty_area: true)
-      expect(page).to have_content("Number of Lodges: 2")
+      visit "/camps/#{@dobbins.id}"
+      save_and_open_page
+      expect(page).to have_content("Number of Lodges: #{@dobbins.lodges.count}")
     end
   end
 end

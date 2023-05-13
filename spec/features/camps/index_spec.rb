@@ -44,5 +44,10 @@ RSpec.describe "Camp" do
       save_and_open_page
       expect(page).to have_content("Number of Lodges: #{@dobbins.lodges.count}")
     end
+
+    it 'page has link to lodges index' do 
+      visit "/camps/#{@dobbins.id}/lodges" 
+      expect(page).to have_link('/lodges')
+    end
   end
 end

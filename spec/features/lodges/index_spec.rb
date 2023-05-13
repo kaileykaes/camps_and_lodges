@@ -34,4 +34,9 @@ RSpec.describe 'Lodges' do
       expect(page).to have_content("Specialty Area: #{silver_lake.specialty_area}")
     end
   end
+
+  it 'page has link to lodges index' do 
+    visit "/camps/#{@dobbins.id}/lodges" 
+    expect(page).to have_link('/lodges')
+  end
 end

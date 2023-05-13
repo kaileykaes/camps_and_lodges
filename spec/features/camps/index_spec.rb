@@ -29,5 +29,19 @@ RSpec.describe "Camp" do
       expect(@dietler.name).to appear_before(@dobbins.name)
       expect(@dobbins.name).to_not appear_before(@magness.name)
     end
+
+    it '/camps records show on camp index page with created_at displayed adjacent' do 
+      visit '/camps' 
+      expect(page).to have_content("Record Created At: #{@magness.created_at}")
+      expect(page).to have_content(@dobbins.created_at)
+      expect(page).to have_content(@dietler.created_at)
+    end
+
+    it '/camps/:id shows number of associated lodges' do
+      visit "/camps/#{@dobbins.id}"
+      scout_craft = @dobbins.lodges.create!(name: 'Scout Craft', director: 'Lauren Dewey', number_of_staff: 4, specialty_area: false)
+      silver_lake = @dobbins.lodges.create!(name: 'Silver Lake', director: 'Jake Burr', number_of_staff: 6, specialty_area: true)
+      expect(page).to have_content("Number of Lodges: 2")
+    end
   end
 end

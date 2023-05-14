@@ -1,4 +1,5 @@
 <% @camps.each do |camp| %>
 <h3><%= camp.name %></h3>
 <p>Record Created At: <%= camp.created_at %>
-<% end %> 
+<% end %><br>
+<%= link_to 'New Camp', '/camps/new' %>

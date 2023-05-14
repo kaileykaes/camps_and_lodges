@@ -41,13 +41,43 @@ RSpec.describe "Camp" do
       scout_craft = @dobbins.lodges.create!(name: 'Scout Craft', director: 'Lauren Dewey', number_of_staff: 4, specialty_area: false)
       silver_lake = @dobbins.lodges.create!(name: 'Silver Lake', director: 'Jake Burr', number_of_staff: 6, specialty_area: true)
       visit "/camps/#{@dobbins.id}"
-      save_and_open_page
       expect(page).to have_content("Number of Lodges: #{@dobbins.lodges.count}")
     end
 
     it 'page has link to lodges index' do 
       visit "/camps/#{@dobbins.id}/lodges" 
-      expect(page).to have_link('/lodges')
+      expect(page).to have_button("All Lodges")
+      click_on 'All Lodges' 
+      expect(current_path).to eq(lodges_path)
+    end
+
+    it 'page has link to camps index' do 
+      visit "/camps/#{@dobbins.id}/lodges" 
+      expect(page).to have_button('All Camps')
+      click_on 'All Camps'
+      expect(current_path).to eq(camps_path)
+    end
+
+    it 'camps/:id has link for /camps/:id/lodges' do 
+      visit "/camps/#{@dobbins.id}"
+      expect(page).to have_button("#{@dobbins.name} Lodges")
+      click_on "#{@dobbins.name} Lodges" 
+      expect(current_path).to eq(camp_lodges_path(@dobbins))
+    end
+
+    describe 'crud functionality' do 
+      it 'can add a new camp' do 
+        visit '/camps'
+        expect(page).to have_link('New Camp')
+        click_on 'New Camp'
+        expect(current_path).to eq('/camps/new')
+        fill_in 'Name', with: 'Philmont Scout Ranch'
+        fill_in 'Campground Number', with: 8
+        fill_in 'Vacancy', with: false
+        click_on 'Create Camp'
+        expect(current_path).to eq('/camps')
+        expect(page).to have_content('Philmont Scout Ranch')
+      end
     end
   end
 end

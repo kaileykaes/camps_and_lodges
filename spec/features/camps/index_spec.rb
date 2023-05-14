@@ -13,15 +13,7 @@ RSpec.describe "Camp" do
       visit "/camps" 
       expect(page).to have_content(@dobbins.name)
     end
-
-    it '/camps/:id shows particular camp with attributes' do 
-      visit "/camps/#{@dobbins.id}" 
-      expect(page).to have_content(@dobbins.name)
-      expect(page).to have_content(@dobbins.campground_number)
-      expect(page).to have_content(@dobbins.vacancy)
-      expect(page).to_not have_content(@dietler.vacancy)
-      expect(page).to_not have_content(@magness.campground_number)
-    end
+   
     
     it '/camps records show and are ordered by created_at time stamps' do 
       visit '/camps'
@@ -37,13 +29,6 @@ RSpec.describe "Camp" do
       expect(page).to have_content(@dietler.created_at)
     end
 
-    it '/camps/:id shows number of associated lodges' do
-      scout_craft = @dobbins.lodges.create!(name: 'Scout Craft', director: 'Lauren Dewey', number_of_staff: 4, specialty_area: false)
-      silver_lake = @dobbins.lodges.create!(name: 'Silver Lake', director: 'Jake Burr', number_of_staff: 6, specialty_area: true)
-      visit "/camps/#{@dobbins.id}"
-      expect(page).to have_content("Number of Lodges: #{@dobbins.lodges.count}")
-    end
-
     it 'page has link to lodges index' do 
       visit "/camps/#{@dobbins.id}/lodges" 
       expect(page).to have_button("All Lodges")
@@ -56,13 +41,6 @@ RSpec.describe "Camp" do
       expect(page).to have_button('All Camps')
       click_on 'All Camps'
       expect(current_path).to eq(camps_path)
-    end
-
-    it 'camps/:id has link for /camps/:id/lodges' do 
-      visit "/camps/#{@dobbins.id}"
-      expect(page).to have_button("#{@dobbins.name} Lodges")
-      click_on "#{@dobbins.name} Lodges" 
-      expect(current_path).to eq(camp_lodges_path(@dobbins))
     end
   end
 end

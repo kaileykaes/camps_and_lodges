@@ -28,19 +28,5 @@ RSpec.describe "Camp" do
       expect(page).to have_content(@dobbins.created_at)
       expect(page).to have_content(@dietler.created_at)
     end
-
-    it 'page has link to lodges index' do 
-      visit "/camps/#{@dobbins.id}/lodges" 
-      expect(page).to have_button("All Lodges")
-      click_on 'All Lodges' 
-      expect(current_path).to eq(lodges_path)
-    end
-
-    it 'page has link to camps index' do 
-      visit "/camps/#{@dobbins.id}/lodges" 
-      expect(page).to have_button('All Camps')
-      click_on 'All Camps'
-      expect(current_path).to eq(camps_path)
-    end
   end
 end

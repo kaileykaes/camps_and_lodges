@@ -7,18 +7,18 @@ RSpec.describe 'crud functionality' do
     @silver_lake = @dobbins.lodges.create!(name: 'Silver Lake', director: 'Jake Burr', number_of_staff: 6, specialty_area: true)
     @the_ool = @dobbins.lodges.create!(name: 'The Ool', director: 'Evan Dorrough', number_of_staff: 6, specialty_area: true)
   end
-  
+
   describe 'update lodges' do 
     it 'lodges can be updated' do 
       visit "/lodges/#{@the_ool.id}"
-      expect(page).to have_button('Update Lodge')
-      click_button 'Update Lodge'
+      expect(page).to have_link('Update Lodge')
+      click_on 'Update Lodge'
       expect(current_path).to eq("/lodges/#{@the_ool.id}/edit")
       fill_in 'Name', with: 'Pool Area'
       fill_in 'Director', with: 'Connor Black'
       fill_in 'Number of Staff', with: 5
       check 'Specialty Area'
-      click_button 'Update Lodge'
+      click_on 'Update Lodge'
       expect(current_path).to eq("/lodges/#{@the_ool.id}")
       expect(page).to have_content("Director: Connor Black")
     end

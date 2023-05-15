@@ -16,6 +16,16 @@ class Camps::LodgesController < ApplicationController
     redirect_to "/camps/#{@camp.id}/lodges"
   end
 
+  def edit
+    @lodge = Lodge.find(params[:id])
+  end
+
+  def update
+    edit
+    @lodge.update(lodge_params)
+    redirect_to "/lodges/#{@lodge.id}"
+  end
+
   private
   def lodge_params
     params.permit(:name, :director, :number_of_staff, :specialty_area)

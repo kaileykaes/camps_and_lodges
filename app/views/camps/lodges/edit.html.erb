@@ -1,0 +1,11 @@
+<%= form_with url: "/lodges/#{@lodge.id}", method: :patch, local: true do |form| %>
+<%= form.label :name, 'Name' %>
+<%= form.text_field :name %>
+<%= form.label :director, 'Director' %>
+<%= form.text_field :director %>
+<%= form.label :number_of_staff, 'Number of Staff' %>
+<%= form.text_field :number_of_staff%>
+<%= form.label :specialty_area, 'Specialty Area' %>
+<%= form.check_box :specialty_area %>
+<%= form.submit 'Update Lodge' %>
+<% end %>

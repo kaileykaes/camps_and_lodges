@@ -30,7 +30,7 @@ RSpec.describe 'Camps lodges index' do
     visit "/camps/#{@dobbins.id}/lodges" 
     expect(page).to have_button('All Lodges')
     click_on 'All Lodges' 
-      expect(current_path).to eq(lodges_path)
+    expect(current_path).to eq(lodges_path)
   end
 
   it 'page has link to camps index' do 

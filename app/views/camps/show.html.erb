@@ -1,3 +1,5 @@
-<h3><%= @camp.name %></h3>
+<h2><%= @camp.name %></h2>
+<h3>Number of Lodges: <%= @camp.lodges.count %><h3>
 <p><%= @camp.campground_number %></p>
 <p><%= @camp.vacancy %></p>
+<%= button_to "#{@camp.name} Lodges", camp_lodges_path(@camp), method: :get %>

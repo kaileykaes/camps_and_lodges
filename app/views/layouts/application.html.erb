@@ -10,6 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <header>  
+    <div class="nav-bar"> 
+      <%= button_to "All Lodges", lodges_path, method: :get %>
+      <%= button_to "All Camps", camps_path, method: :get %>
+    </div>
+  </header>
+
   <body>
     <%= yield %>
   </body>

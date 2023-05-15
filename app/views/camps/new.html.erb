@@ -1,0 +1,9 @@
+<%= form_with model: @new_camp, url: '/camps' do |form| %>
+<%= form.label :name, 'Name' %><br>
+<%= form.text_field :name %><br>
+<%= form.label :campground_number, 'Campground Number' %><br>
+<%= form.text_field :campground_number %><br>
+<%= form.label :vacancy, 'Vacancy' %><br>
+<%= form.text_field :vacancy %><br>
+<%= form.submit 'Create Camp' %><br>
+<% end %>

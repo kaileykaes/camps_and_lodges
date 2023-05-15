@@ -15,18 +15,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_173836) do
   enable_extension "plpgsql"
 
   create_table "camps", force: :cascade do |t|
-    t.string "name"
-    t.integer "campground_number"
-    t.boolean "vacancy"
+    t.string "name",  null: false
+    t.integer "campground_number",  null: false
+    t.boolean "vacancy",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "lodges", force: :cascade do |t|
-    t.string "name"
-    t.string "director"
-    t.integer "number_of_staff"
-    t.boolean "specialty_area"
+    t.string "name", null: false
+    t.string "director", null: false
+    t.integer "number_of_staff", null: false
+    t.boolean "specialty_area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "camp_id", null: false

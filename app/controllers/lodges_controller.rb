@@ -6,4 +6,6 @@ class LodgesController <ApplicationController
   def show
     @lodge = Lodge.find(params[:id])
   end
+
+  
 end

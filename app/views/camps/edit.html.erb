@@ -1,6 +1,5 @@
 <%= form_with url: "/camps/#{@camp.id}", method: :patch, local: true do |form| %>
 <%= form.label :name, 'Name' %>
-<%= form.label :name, 'Name' %>
 <%= form.text_field :name %>
 <%= form.label :campground_number, 'Campground Number' %>
 <%= form.text_field :campground_number %>

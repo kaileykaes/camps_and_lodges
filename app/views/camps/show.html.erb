@@ -3,3 +3,4 @@
 <p><%= @camp.campground_number %></p>
 <p><%= @camp.vacancy %></p>
 <%= button_to "#{@camp.name} Lodges", camp_lodges_path(@camp), method: :get %>
+<%= link_to 'Update Camp', "/camps/#{@camp.id}/edit" %>

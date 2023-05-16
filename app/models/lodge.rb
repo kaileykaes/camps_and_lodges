@@ -7,8 +7,4 @@ class Lodge < ApplicationRecord
       lodge.specialty_area == true
     end
   end
-
-  def self.alphabetical
-    Lodge.order(name: :asc)
-  end
 end

@@ -1,7 +1,7 @@
 class LodgesController <ApplicationController
   def index
-    # @lodges = Lodge.all
-    @lodges = Lodge.true_records
+    @lodges = Lodge.all
+    # @lodges = Lodge.true_records
   end
 
   def show

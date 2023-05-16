@@ -5,6 +5,7 @@ RSpec.describe 'Camps lodges index' do
     @dobbins = Camp.create!(name: 'Camp Cris Dobbins', campground_number: 13, vacancy: true)
     @scout_craft = @dobbins.lodges.create!(name: 'Scout Craft', director: 'Lauren Dewey', number_of_staff: 4, specialty_area: false)
     @silver_lake = @dobbins.lodges.create!(name: 'Silver Lake', director: 'Jake Burr', number_of_staff: 6, specialty_area: true)
+    @the_ool = @dobbins.lodges.create!(name: 'The Ool', director: 'Evan Dorrough', number_of_staff: 6, specialty_area: true)
   end
 
   it '/camps/:camp_id/lodges shows all lodges w/attributes for a camp' do 
@@ -52,5 +53,16 @@ RSpec.describe 'Camps lodges index' do
     expect(page).to have_button('All Camps')
     click_on 'All Camps'
     expect(current_path).to eq(camps_path)
+  end
+
+  describe 'sorting alphabetically active record' do 
+    it 'sort parents children in alphabetical order by name' do 
+    visit "/camps/#{@dobbins.id}/lodges"
+    expect(page).to have_link('Sort Lodges Alphabetically')
+    click_on 'Sort Lodges Alphabetically'
+    expect(@scout_craft.name).to appear_before(@silver_lake.name)
+    expect(@silver_lake.name).to appear_before(@the_ool.name)
+    expect(@silver_lake.name).to_not appear_before(@scout_craft.name)
+    end
   end
 end

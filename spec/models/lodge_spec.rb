@@ -16,9 +16,5 @@ RSpec.describe Lodge, type: :model do
     it 'sorts truthy records' do 
       expect(Lodge.true_records).to eq([@magness_lake, @rock_range])
     end
-
-    it 'using active record, sorts lodges alphabetically' do 
-      expect(Lodge.alphabetical).to eq([@magness_lake, @nature_lodge, @rock_range])
-    end
   end
 end

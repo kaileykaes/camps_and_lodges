@@ -1,7 +1,7 @@
 class Camps::LodgesController < ApplicationController
   def index
     @camp = Camp.find(params[:id])
-    @lodges = @camp.lodges.all
+    @lodges = @camp.sort_alphabetically(params['sort'])
     #alternative solution could be to create another controller 
     #both of these are valid
   end

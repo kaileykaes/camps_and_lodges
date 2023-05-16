@@ -60,7 +60,11 @@ RSpec.describe 'Camps lodges index' do
       adventure = @dobbins.lodges.create!(name: 'Adventure Lodge', director: 'Jacob Mann', number_of_staff: 4, specialty_area: false)
       visit "/camps/#{@dobbins.id}/lodges"
       expect(page).to have_link('Sort Lodges Alphabetically')
+      expect(@scout_craft.name).to appear_before(@silver_lake.name)
+      expect(@silver_lake.name).to appear_before(@the_ool.name)
+      expect(adventure.name).to_not appear_before(@the_ool.name)
       click_on 'Sort Lodges Alphabetically'
+      expect(current_path).to eq("/camps/#{@dobbins.id}/lodges")
       expect(adventure.name).to appear_before(@scout_craft.name)
       expect(@scout_craft.name).to appear_before(@silver_lake.name)
       expect(@silver_lake.name).to appear_before(@the_ool.name)

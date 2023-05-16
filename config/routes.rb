@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   post '/camps', to: 'camps#create'
   get '/camps/:id/edit', to: 'camps#edit'
   patch '/camps/:id', to: 'camps#update'
-  get '/camps/:id/lodges', to: 'camps#show_lodges', as: 'camp_lodges'
+  get '/camps/:id/lodges', to: 'camps/lodges#index', as: 'camp_lodges'
+  get '/camps/:id/lodges/new', to: 'camps/lodges#new'
+  post '/camps/:id/lodges', to: 'camps/lodges#create'
   get '/lodges', to: 'lodges#index'
   get '/lodges/:id', to: 'lodges#show'
+  get '/lodges/:id/edit', to: 'camps/lodges#edit'
+  patch '/lodges/:id', to: 'camps/lodges#update'
 end
